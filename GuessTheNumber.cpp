@@ -30,5 +30,8 @@ int main(){
             guesses = 0;
         }
     }
+    if(guesses==0 && num!=secretNum){
+        cout<<"You lost."<<endl;
+    }
     return 0;
 }
