@@ -11,22 +11,28 @@ int main(){
     cin>>op;
     //Switch statement to choose which operation to use, depending on what user sets op equal to
     switch(op){
+        //Addition
         case '+':
             cout<<num1<<" + "<<num2<<" = "<<num1+num2;
             break;
+        //Subtraction
         case '-':
             cout<<num1<<" - "<<num2<<" = "<<num1-num2;
             break;
+        //Multiplication
         case '*':
             cout<<num1<<" * "<<num2<<" = "<<num1*num2;
             break;
+        //Division
         case '/':
             if(num2!=0){
                 cout<<num1<<" / "<<num2<<" = "<<num1/num2;
             } else {
+                //Division by 0 is undefined
                 cout<<num1<<" / "<<num2<<" = undefined";
             }
             break;
+        //Power
         case '^':
             cout<<num1<<" ^ "<<num2<<" = "<<pow(num1,num2);
             break;
