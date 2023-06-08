@@ -21,7 +21,11 @@ int main(){
             cout<<num1<<" * "<<num2<<" = "<<num1*num2;
             break;
         case '/':
-            cout<<num1<<" / "<<num2<<" = "<<num1/num2;
+            if(num2!=0){
+                cout<<num1<<" / "<<num2<<" = "<<num1/num2;
+            } else {
+                cout<<num1<<" / "<<num2<<" = undefined";
+            }
             break;
         case '^':
             cout<<num1<<" ^ "<<num2<<" = "<<pow(num1,num2);
