@@ -13,7 +13,7 @@ int main(){
     cost-=dimes*0.10;
     nickels = cost/0.05;
     cost-=nickels*0.05;
-    pennies = cost*100;
+    pennies = cost/0.01;
     //Returns amount of change
     cout<<"You need "<<quarters<<" quarters, "<<dimes<<" dimes, "<<nickels<<" nickels, and "<<pennies<<" pennies.";
     return 0;
