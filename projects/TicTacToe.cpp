@@ -1,6 +1,5 @@
 #include <iostream>
 #include <cstdlib>
-#include <ctime>
 using namespace std;
 
 //Tic-Tac-Toe tables
@@ -11,7 +10,6 @@ bool flag[3][3] = {{false,false,false},
                    {false,false,false},
                    {false,false,false}};
 bool takenStatus = false;
-bool gameOver = false;
 
 //Continuously checks if game is won yet
 bool checkWinStatus(){
@@ -53,8 +51,7 @@ bool checkWinStatus(){
     }
     if(winStatus){
         cout<<"The winner is "<<winner<<"!"<<endl;
-        gameOver;
-        exit(0);
+        return 0;
     }
     return winStatus;
 }
@@ -166,7 +163,6 @@ int main(){
             }
             winStatus = checkWinStatus();
         } else {
-            srand(static_cast<unsigned int>(time(nullptr)));
             int botLocation = rand()%9+1;
             while(takenStatus){
                 botLocation = rand()%9+1;
