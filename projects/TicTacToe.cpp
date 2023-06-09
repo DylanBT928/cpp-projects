@@ -58,98 +58,76 @@ bool checkWinStatus(){
     }
     return winStatus;
 }
-//Plays a turn
-void playTurn(string player, int location){
+//Checks if the location is not taken
+bool valid(int location){
     switch(location){
         case 1:
-            if(!flag[0][0]){
-                table[0][0] = player;
-                flag[0][0] = true;
-                takenStatus = false;
-            } else {
-                cout<<"This is taken."<<endl;
-                takenStatus = true;
-            }
+            return flag[0][0];
             break;
         case 2:
-            if(!flag[0][1]){
-                table[0][1] = player;
-                flag[0][1] = true;
-                takenStatus = false;
-            } else {
-                cout<<"This is taken."<<endl;
-                takenStatus = true;
-            }
+            return flag[0][1];
             break;
         case 3:
-            if(!flag[0][2]){
-                table[0][2] = player;
-                flag[0][2] = true;
-                takenStatus = false;
-            } else {
-                cout<<"This is taken."<<endl;
-                takenStatus = true;
-            }
+            return flag[0][2];
             break;
         case 4:
-            if(!flag[1][0]){
-                table[1][0] = player;
-                flag[1][0] = true;
-                takenStatus = false;
-            } else {
-                cout<<"This is taken."<<endl;
-                takenStatus = true;
-            }
+            return flag[1][0];
             break;
         case 5:
-            if(!flag[1][1]){
-                table[1][1] = player;
-                flag[1][1] = true;
-                takenStatus = false;
-            } else {
-                cout<<"This is taken."<<endl;
-                takenStatus = true;
-            }
+            return flag[1][1];
             break;
         case 6:
-            if(!flag[1][2]){
-                table[1][2] = player;
-                flag[1][2] = true;
-                takenStatus = false;
-            } else {
-                cout<<"This is taken."<<endl;
-                takenStatus = true;
-            }
+            return flag[1][2];
             break;
         case 7:
-            if(!flag[2][0]){
-                table[2][0] = player;
-                flag[2][0] = true;
-                takenStatus = false;
-            } else {
-                cout<<"This is taken."<<endl;
-                takenStatus = true;
-            }
+            return flag[2][0];
             break;
         case 8:
-            if(!flag[2][1]){
-                table[2][1] = player;
-                flag[2][1] = true;
-                takenStatus = false;
-            } else {
-                cout<<"This is taken."<<endl;
-                takenStatus = true;
-            }
+            return flag[2][1];
             break;
         case 9:
-            if(!flag[2][2]){
-                table[2][2] = player;
-                flag[2][2] = true;
-                takenStatus = false;
-            } else {
-                cout<<"This is taken."<<endl;
-                takenStatus = true;
-            }
+            return flag[2][2];
+            break;
+    }
+}
+//Player takes the location
+void turn(string player, int location){
+    switch(location){
+        case 1:
+            flag[0][0] = true;
+            table[0][0] = player;
+            break;
+        case 2:
+            flag[0][1] = true;
+            table[0][1] = player;
+            break;
+        case 3:
+            flag[0][2] = true;
+            table[0][2] = player;
+            break;
+        case 4:
+            flag[1][0] = true;
+            table[1][0] = player;
+            break;
+        case 5:
+            flag[1][1] = true;
+            table[1][1] = player;
+            break;
+        case 6:
+            flag[1][2] = true;
+            table[1][2] = player;
+            break;
+        case 7:
+            flag[2][0] = true;
+            table[2][0] = player;
+            break;
+        case 8:
+            flag[2][1] = true;
+            table[2][1] = player;
+            break;
+        case 9:
+            flag[2][2] = true;
+            table[2][2] = player;
             break;
     }
 }
@@ -160,18 +138,21 @@ int main(){
         if(i%2!=0){
             cout<<"Your turn (X): ";
             cin>>location;
-            while(location<1 || location>9 || takenStatus){
+            while(location<1 || location>9){
                 cin>>location;
-                playTurn("X", location);
+                while(valid(location)){
+                    cin>>location;
+                }
+                turn("X",location);
             }
             winStatus = checkWinStatus();
         } else {
             srand(static_cast<unsigned int>(time(nullptr)));
             int botLocation = rand()%9+1;
-            while(takenStatus){
+            while(valid(botLocation)){
                 botLocation = rand()%9+1;
-                playTurn("O", botLocation);
             }
+            turn("O", botLocation);
             cout<<"O takes "<<botLocation<<"."<<endl;
             winStatus = checkWinStatus();
         }
