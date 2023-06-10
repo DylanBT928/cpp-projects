@@ -10,151 +10,93 @@ string table[3][3] = {{"1","2","3"},
 bool flag[3][3] = {{false,false,false},
                    {false,false,false},
                    {false,false,false}};
-bool takenStatus = false;
-bool gameOver = false;
+string winner;
 
-//Continuously checks if game is won yet
-bool checkWinStatus(){
-    bool winStatus = false;
-    takenStatus = false;
-    string winner;
-    if(flag[1][1]){
-        if(table[1][1]==table[0][0] && table[1][1]==table[2][2] && table[0][0]==table[2][2]){
-            winStatus = true; //1-5-9
-            winner = table[1][1];
-        } else if(table[1][1]==table[0][2] && table[1][1]==table[2][0] && table[0][2]==table[2][0]){
-            winStatus = true; //3-5-7
-            winner = table[1][1];
-        } else if(table[1][1]==table[1][0] && table[1][1]==table[1][2] && table[1][0]==table[1][2]){
-            winStatus = true; //4-5-6
-            winner = table[1][1];
-        } else if(table[1][1]==table[0][1] && table[1][1]==table[2][1] && table[0][1]==table[2][1]){
-            winStatus = true; //2-5-8
-            winner = table[1][1];
-        } else {
-            winStatus = false;
-        }
+int row(int r){
+    if(1<=r && r<=3){
+        return 0;
+    } else if(4<=r && r<=6){
+        return 1;
+    } else if(7<=r && r<=9){
+        return 2;
     } else {
-        if(table[0][0]==table[0][1] && table[0][0]==table[0][2] && table[0][1]==table[0][2]){
-            winStatus = true; //1-2-3
-            winner = table[0][0];
-        } else if(table[0][2]==table[1][2] && table[0][2]==table[2][2] && table[1][2]==table[2][2]){
-            winStatus = true; //3-6-9
-            winner = table[0][2];
-        } else if(table[2][0]==table[2][1] && table[2][0]==table[2][2] && table[2][1]==table[2][2]){
-            winStatus = true; //7-8-9
-            winner = table[2][0];
-        } else if(table[0][0]==table[1][0] && table[0][0]==table[2][0] && table[1][0]==table[2][0]){
-            winStatus = true; //1-4-7
-            winner = table[0][0];
-        } else {
-            winStatus = false;
-        }
-    }
-    if(winStatus){
-        cout<<"The winner is "<<winner<<"!"<<endl;
-        gameOver;
-        exit(0);
-    }
-    return winStatus;
-}
-//Checks if the location is not taken
-bool valid(int location){
-    switch(location){
-        case 1:
-            return flag[0][0];
-            break;
-        case 2:
-            return flag[0][1];
-            break;
-        case 3:
-            return flag[0][2];
-            break;
-        case 4:
-            return flag[1][0];
-            break;
-        case 5:
-            return flag[1][1];
-            break;
-        case 6:
-            return flag[1][2];
-            break;
-        case 7:
-            return flag[2][0];
-            break;
-        case 8:
-            return flag[2][1];
-            break;
-        case 9:
-            return flag[2][2];
-            break;
+        cout<<"Invalid, try again."<<endl;
+        return -1;
     }
 }
-//Player takes the location
+int col(int c){
+    if(c==1 || c==4 || c==7){
+        return 0;
+    } else if(c==2 || c==5 || c==8){
+        return 1;
+    } else if(c==3 || c==6 || c==9){
+        return 2;
+    } else {
+        cout<<"Invalid, try again."<<endl;
+        return -1;
+    }
+}
+
+bool isValid(int r, int c){
+    if(r==-1 || c==-1){
+        cout<<"Out of bounds, try again."<<endl;
+        return false;
+    }
+    if(flag[r][c]==true){
+        cout<<"Taken, try again."<<endl;
+    }
+    return true;
+}
+bool isWon(){
+    if(table[1][1]==table[0][0] && table[1][1]==table[2][2] && table[0][0]==table[2][2] && flag[1][1]==true){
+        winner = table[1][1]; //1-5-9
+    } else if(table[1][1]==table[0][2] && table[1][1]==table[2][0] && table[0][2]==table[2][0] && flag[1][1]==true){
+        winner = table[1][1]; //3-5-7
+    } else if(table[1][1]==table[1][0] && table[1][1]==table[1][2] && table[1][0]==table[1][2] && flag[1][1]==true){
+        winner = table[1][1]; //4-5-6
+    } else if(table[1][1]==table[0][1] && table[1][1]==table[2][1] && table[0][1]==table[2][1] && flag[1][1]==true){
+        winner = table[1][1]; //2-5-8
+    } else if(table[0][0]==table[0][1] && table[0][0]==table[0][2] && table[0][1]==table[0][2] && flag[0][0]==true){
+        winner = table[0][0]; //1-2-3
+    } else if(table[0][2]==table[1][2] && table[0][2]==table[2][2] && table[1][2]==table[2][2] && flag[0][2]==true){
+        winner = table[0][2]; //3-6-9
+    } else if(table[2][0]==table[2][1] && table[2][0]==table[2][2] && table[2][1]==table[2][2] && flag[2][0]==true){
+        winner = table[2][0]; //7-8-9
+    } else if(table[0][0]==table[1][0] && table[0][0]==table[2][0] && table[1][0]==table[2][0] && flag[0][0]==true){
+        winner = table[0][0]; //1-4-7
+    } else {
+        return false;
+    } return true;
+}
+
 void turn(string player, int location){
-    switch(location){
-        case 1:
-            flag[0][0] = true;
-            table[0][0] = player;
-            break;
-        case 2:
-            flag[0][1] = true;
-            table[0][1] = player;
-            break;
-        case 3:
-            flag[0][2] = true;
-            table[0][2] = player;
-            break;
-        case 4:
-            flag[1][0] = true;
-            table[1][0] = player;
-            break;
-        case 5:
-            flag[1][1] = true;
-            table[1][1] = player;
-            break;
-        case 6:
-            flag[1][2] = true;
-            table[1][2] = player;
-            break;
-        case 7:
-            flag[2][0] = true;
-            table[2][0] = player;
-            break;
-        case 8:
-            flag[2][1] = true;
-            table[2][1] = player;
-            break;
-        case 9:
-            flag[2][2] = true;
-            table[2][2] = player;
-            break;
-    }
+    flag[row(location)][col(location)] = true;
+    table[row(location)][col(location)] = player;
 }
+
 int main(){
-    bool winStatus = false;
+    srand(static_cast<unsigned int>(time(nullptr)));
+    int location{};
     for(int i = 1; i<=9; i++){
-        int location;
-        if(i%2!=0){
-            cout<<"Your turn (X): ";
-            cin>>location;
-            while(location<1 || location>9){
+        while(!isWon()){
+            if(i%2!=0){
+                cout<<"Your turn (X): ";
                 cin>>location;
-                while(valid(location)){
+                while(!isValid(row(location), col(location))){
                     cin>>location;
                 }
-                turn("X",location);
+                turn("X", location);
+            } else {
+                int botLocation = rand()%9+1;
+                while(!isValid(row(botLocation), col(botLocation))){
+                    botLocation = rand()%9+1;
+                }
+                turn("O", botLocation);
+                cout<<"O takes "<<botLocation<<"."<<endl;
             }
-            winStatus = checkWinStatus();
-        } else {
-            srand(static_cast<unsigned int>(time(nullptr)));
-            int botLocation = rand()%9+1;
-            while(valid(botLocation)){
-                botLocation = rand()%9+1;
+            if(isWon()){
+                cout<<winner<<" has won!"<<endl;
             }
-            turn("O", botLocation);
-            cout<<"O takes "<<botLocation<<"."<<endl;
-            winStatus = checkWinStatus();
         }
     }
     return 0;
