@@ -12,6 +12,7 @@ bool flag[3][3] = {{false,false,false},
                    {false,false,false}};
 string winner;
 
+//Returns the row and column depending on inputted location
 int row(int r){
     if(1<=r && r<=3){
         return 0;
@@ -37,16 +38,20 @@ int col(int c){
     }
 }
 
+//Checks if the location is valid
 bool isValid(int r, int c){
     if(r==-1 || c==-1){
-        cout<<"Out of bounds, try again."<<endl;
+        cout<<"Out of bounds, try again: ";
         return false;
     }
     if(flag[r][c]==true){
-        cout<<"Taken, try again."<<endl;
+        cout<<"Taken, try again: ";
+        return false;
     }
     return true;
 }
+
+//Chekcs if the game has been won
 bool isWon(){
     if(table[1][1]==table[0][0] && table[1][1]==table[2][2] && table[0][0]==table[2][2] && flag[1][1]==true){
         winner = table[1][1]; //1-5-9
@@ -69,35 +74,40 @@ bool isWon(){
     } return true;
 }
 
+//Plays a turn depending on user input
 void turn(string player, int location){
     flag[row(location)][col(location)] = true;
     table[row(location)][col(location)] = player;
 }
 
 int main(){
+    //Seed for player O randomization
     srand(static_cast<unsigned int>(time(nullptr)));
     int location{};
+    //Maximum of 9 turns total
     for(int i = 1; i<=9; i++){
-        while(!isWon()){
+        if(!isWon()){
             if(i%2!=0){
                 cout<<"Your turn (X): ";
                 cin>>location;
                 while(!isValid(row(location), col(location))){
+                    //Asks for input until valid
                     cin>>location;
                 }
                 turn("X", location);
-            } else {
+            } 
+            if(i%2==0) {
                 int botLocation = rand()%9+1;
                 while(!isValid(row(botLocation), col(botLocation))){
+                    //Randomizes until valid
                     botLocation = rand()%9+1;
                 }
                 turn("O", botLocation);
                 cout<<"O takes "<<botLocation<<"."<<endl;
             }
-            if(isWon()){
-                cout<<winner<<" has won!"<<endl;
-            }
         }
     }
+    //Game ends and outputs winner
+    cout<<winner<<" has won!"<<endl;
     return 0;
 }
