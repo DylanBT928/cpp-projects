@@ -3,7 +3,7 @@ using namespace std;
 string secretWord{};
 char letter{};
 
-string guess(){
+string hide(){
 
 }
 
