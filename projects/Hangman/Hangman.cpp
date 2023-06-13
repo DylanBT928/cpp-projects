@@ -1,6 +1,5 @@
 #include <iostream>
-#include <string>
-#include <ctype.h>
+#include <ctype.h> 
 using namespace std;
 string secretWord{}, hidden, usedLetters{};
 char letter{};
@@ -44,25 +43,32 @@ string reveal(char l){
     return hidden;
 }
 
-
 int main(){
+    //6 guesses (head, torso, two arms, two legs)
     int guesses = 6;
     cout<<"Please enter a word: ";
     cin>>secretWord;
+    //Converts inputted word/phrase into a blank word/phrase
     hidden = hide(secretWord);
     cout<<hidden<<'\n';
+    //Loops while there are guesses left and not won
     while(guesses>0 && secretWord!=hidden){
         cout<<"Guess a letter: ";
         cin>>letter;
+        //If the letter is already used, it does not take a guess nor reveal anything
         if(isUsed(letter)){
             cout<<"Letter is already used.\n";
-        } else if(isValid(letter)){
+        } //If the letter is in the secret word, it is revealed
+        else if(isValid(letter)){
             cout<<reveal(letter)<<'\n';
-        } else {
+        } //If it is not used and not in the secret word, a guess is taken
+        else {
             guesses--;
+            //Prints how many guesses the user has left
             cout<<"You have "<<guesses<<" guesses left."<<'\n';
         }
     }
+    //States if user won or lost
     if(secretWord==hidden){
         cout<<"Congratulations, you win!"<<endl;
     } else {
