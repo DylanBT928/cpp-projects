@@ -56,11 +56,13 @@ int main(){
         cout<<"Guess a letter: ";
         cin>>letter;
         //If the letter is already used, it does not take a guess nor reveal anything
-        if(isUsed(letter)){
+        if(isUsed(letter) || isUsed(toupper(letter))){
             cout<<"Letter is already used.\n";
         } //If the letter is in the secret word, it is revealed
-        else if(isValid(letter)){
-            cout<<reveal(letter)<<'\n';
+        else if(isValid(letter) || isValid(toupper(letter))){
+            reveal(letter);
+            reveal(toupper(letter));
+            cout<<hidden<<'\n';
         } //If it is not used and not in the secret word, a guess is taken
         else {
             guesses--;
