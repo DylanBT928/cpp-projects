@@ -11,6 +11,7 @@
 
 ## Projects
 - [Calculator](./projects/Calculator)
+- [Go Fish](./projects/Go%20Fish)
 - [Hangman](./projects/Hangman)
 - [Luhn Algorithm](./projects/Luhn%20Algorithm)
 - [Tic-Tac-Toe](./projects/Tic-Tac-Toe)
