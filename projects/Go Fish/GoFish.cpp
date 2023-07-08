@@ -74,6 +74,8 @@ int main(){
         }
         if(isValid(dealerHand, playerGuess)==-1){
             cout<<"Dealer does not have a "<<playerGuess<<".\n";
+            draw(playerHand, bookmark);
+            bookmark++;
         }
         //dealer turn
         if(bookmark<=52){
@@ -84,6 +86,8 @@ int main(){
                     dealerPairs++;
                 }
             }
+            draw(dealerHand, bookmark);
+            bookmark++;
         }
         cout<<"Your pairs: "<<playerPairs<<"\tBot's pairs: "<<dealerPairs<<'\n';
         cout<<"The deck has "<<(52-bookmark)<<" cards left.\n";
