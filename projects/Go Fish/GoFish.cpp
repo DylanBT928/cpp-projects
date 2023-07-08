@@ -7,6 +7,7 @@ string deck[52] = {"Ace","2","3","4","5","6","7","8","9","10","Jack","Queen","Ki
                    "Ace","2","3","4","5","6","7","8","9","10","Jack","Queen","King",
                    "Ace","2","3","4","5","6","7","8","9","10","Jack","Queen","King",
                    "Ace","2","3","4","5","6","7","8","9","10","Jack","Queen","King",};
+string oneOfEachCard[13] = {"Ace","2","3","4","5","6","7","8","9","10","Jack","Queen","King"};
 void shuffle(){
     srand(static_cast<unsigned int>(time(nullptr)));
     for(int i = 0; i<52; i++){
@@ -58,29 +59,31 @@ int main(){
         bookmark+=2;
     }
     while(bookmark<=52){
-        string guess{};
+        string playerGuess{};
         showHand(playerHand);
         cout<<"Guess a card: "; //case-sensitive
-        cin>>guess;
+        cin>>playerGuess;
         //player's turn
-        while(isValid(dealerHand, guess)!=-1 && bookmark<=52){
-            if(isBook(playerHand, guess)){
+        while(isValid(dealerHand, playerGuess)!=-1 && bookmark<=52){
+            draw(playerHand, isValid(dealerHand, playerGuess));
+            if(isBook(playerHand, playerGuess)){
                 playerPairs++;
             }
-            draw(playerHand, isValid(dealerHand, guess));
             cout<<"Guess another card: ";
-            cin>>guess;
+            cin>>playerGuess;
         }
-        if(isValid(dealerHand, guess)==-1){
-            cout<<"Dealer does not have a "<<guess<<".\n";
+        if(isValid(dealerHand, playerGuess)==-1){
+            cout<<"Dealer does not have a "<<playerGuess<<".\n";
         }
         //dealer turn
         if(bookmark<=52){
-            /*
-             *
-             * Unfinished
-             * 
-             */
+            string dealerGuess{oneOfEachCard[rand()%13+1]};
+            while(isValid(playerHand, dealerGuess)!=-1 && bookmark<=52){
+                draw(dealerHand, isValid(playerHand, dealerGuess));
+                if(isBook(dealerHand, dealerGuess)){
+                    dealerPairs++;
+                }
+            }
         }
         cout<<"Your pairs: "<<playerPairs<<"\tBot's pairs: "<<dealerPairs<<'\n';
         cout<<"The deck has "<<(52-bookmark)<<" cards left.\n";
