@@ -1,16 +1,15 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
-using namespace std;
 
 //Tic-Tac-Toe tables
-string table[3][3] = {{"1","2","3"},
+std::string table[3][3] = {{"1","2","3"},
                       {"4","5","6"},
                       {"7","8","9"}};
 bool flag[3][3] = {{false,false,false},
                    {false,false,false},
                    {false,false,false}};
-string winner;
+std::string winner;
 
 //Returns the row and column depending on inputted location
 int row(int r){
@@ -21,7 +20,7 @@ int row(int r){
     } else if(7<=r && r<=9){
         return 2;
     } else {
-        cout<<"Invalid, try again."<<endl;
+        std::cout<<"Invalid, try again."<<std::endl;
         return -1;
     }
 }
@@ -33,7 +32,7 @@ int col(int c){
     } else if(c==3 || c==6 || c==9){
         return 2;
     } else {
-        cout<<"Invalid, try again."<<endl;
+        std::cout<<"Invalid, try again."<<std::endl;
         return -1;
     }
 }
@@ -42,13 +41,13 @@ int col(int c){
 bool isValid(int player, int r, int c){
     if(r==-1 || c==-1){
         if(player==1){
-            cout<<"Out of bounds, try again: ";
+            std::cout<<"Out of bounds, try again: ";
         }
         return false;
     }
     if(flag[r][c]==true){
         if(player==1){
-            cout<<"Taken, try again: ";
+            std::cout<<"Taken, try again: ";
         }
         return false;
     }
@@ -79,24 +78,24 @@ bool isWon(){
 }
 
 //Plays a turn depending on user input
-void turn(string player, int location){
+void turn(std::string player, int location){
     flag[row(location)][col(location)] = true;
     table[row(location)][col(location)] = player;
 }
 
 //Draws the table
 void showTable(){
-    cout<<"   |   |   \n";
-    cout<<" "<<table[0][0]<<" | "<<table[0][1]<<" | "<<table[0][2]<<" \n";
-    cout<<"   |   |   \n";
-    cout<<"-----------\n";
-    cout<<"   |   |   \n";
-    cout<<" "<<table[1][0]<<" | "<<table[1][1]<<" | "<<table[1][2]<<" \n";
-    cout<<"   |   |   \n";
-    cout<<"-----------\n";
-    cout<<"   |   |   \n";
-    cout<<" "<<table[2][0]<<" | "<<table[2][1]<<" | "<<table[2][2]<<" \n";
-    cout<<"   |   |   \n";
+    std::cout<<"   |   |   \n";
+    std::cout<<" "<<table[0][0]<<" | "<<table[0][1]<<" | "<<table[0][2]<<" \n";
+    std::cout<<"   |   |   \n";
+    std::cout<<"-----------\n";
+    std::cout<<"   |   |   \n";
+    std::cout<<" "<<table[1][0]<<" | "<<table[1][1]<<" | "<<table[1][2]<<" \n";
+    std::cout<<"   |   |   \n";
+    std::cout<<"-----------\n";
+    std::cout<<"   |   |   \n";
+    std::cout<<" "<<table[2][0]<<" | "<<table[2][1]<<" | "<<table[2][2]<<" \n";
+    std::cout<<"   |   |   \n";
 }
 
 int main(){
@@ -104,15 +103,16 @@ int main(){
     srand(static_cast<unsigned int>(time(nullptr)));
     int location{};
     //Maximum of 9 turns total
+    std::cout<<"Player: X\nBot: O\n";
     for(int i = 1; i<=9; i++){
         if(!isWon()){
             if(i%2!=0){
                 showTable();
-                cout<<"Your turn (X): ";
-                cin>>location;
+                std::cout<<"Your turn (X): ";
+                std::cin>>location;
                 while(!isValid(1, row(location), col(location))){
                     //Asks for input until valid
-                    cin>>location;
+                    std::cin>>location;
                 }
                 turn("X", location);
             } 
@@ -123,12 +123,12 @@ int main(){
                     botLocation = rand()%9+1;
                 }
                 turn("O", botLocation);
-                cout<<"O takes "<<botLocation<<"."<<endl;
+                std::cout<<"O takes "<<botLocation<<"."<<std::endl;
             }
         }
     }
     //Game ends and outputs winner
     showTable();
-    cout<<winner<<" has won!"<<endl;
+    std::cout<<winner<<" has won!"<<std::endl;
     return 0;
 }
