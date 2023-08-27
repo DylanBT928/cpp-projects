@@ -39,13 +39,17 @@ int col(int c){
 }
 
 //Checks if the location is valid
-bool isValid(int r, int c){
+bool isValid(int player, int r, int c){
     if(r==-1 || c==-1){
-        cout<<"Out of bounds, try again: ";
+        if(player==1){
+            cout<<"Out of bounds, try again: ";
+        }
         return false;
     }
     if(flag[r][c]==true){
-        cout<<"Taken, try again: ";
+        if(player==1){
+            cout<<"Taken, try again: ";
+        }
         return false;
     }
     return true;
@@ -106,7 +110,7 @@ int main(){
                 showTable();
                 cout<<"Your turn (X): ";
                 cin>>location;
-                while(!isValid(row(location), col(location))){
+                while(!isValid(1, row(location), col(location))){
                     //Asks for input until valid
                     cin>>location;
                 }
@@ -114,7 +118,7 @@ int main(){
             } 
             if(i%2==0) {
                 int botLocation = rand()%9+1;
-                while(!isValid(row(botLocation), col(botLocation))){
+                while(!isValid(2, row(botLocation), col(botLocation))){
                     //Randomizes until valid
                     botLocation = rand()%9+1;
                 }
@@ -124,6 +128,7 @@ int main(){
         }
     }
     //Game ends and outputs winner
+    showTable();
     cout<<winner<<" has won!"<<endl;
     return 0;
 }
