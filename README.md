@@ -1,4 +1,4 @@
-# personal-projects
+# small-projects
 - Small projects created by me
 ---
 ## Programs
