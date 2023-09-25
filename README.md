@@ -1,5 +1,5 @@
 # personal-projects
-- Self-made projects in C++
+- Small projects created by me
 ---
 ## Programs
 - [Change Return](./programs/ChangeReturn.cpp)
