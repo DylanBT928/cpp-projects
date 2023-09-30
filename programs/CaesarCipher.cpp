@@ -39,11 +39,23 @@ int main(){
         case 2:
             //Decryption
             cout<<"decrypting...\n";
-
-
-
-
-
+            for(int i = 0; i<message.length(); i++){
+                int j = 0;
+                while(message.at(i)!=alphabet[j] && j<26){
+                    j++;
+                }
+                if(isalpha(message.at(i))){
+                    if(j-shift<26){
+                        newmsg+=alphabet[j-shift];
+                    } else {
+                        newmsg+=alphabet[j-shift+26];
+                    }
+                } else {
+                    newmsg+=message[i];
+                }
+                j = 0;
+            }
+            cout<<newmsg;
             break;
         default:
             cout<<"Invalid option."<<endl;
