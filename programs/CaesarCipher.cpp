@@ -7,7 +7,7 @@ int main(){
                          'n','o','p','q','r','s','t','u','v','w','x','y','z'};
     string message{}, newmsg{};
     int option{1}, shift{3};
-    cout<<"(1)encrypt or (2)decrypt: ";
+    cout<<"(1) encrypt or (2) decrypt: ";
     cin>>option;
     cout<<"enter shift value: ";
     cin>>shift;
@@ -24,7 +24,11 @@ int main(){
                     j++;
                 }
                 if(isalpha(message.at(i))){
-                    newmsg+=alphabet[j];
+                    if(j+shift<26){
+                        newmsg+=alphabet[j+shift];
+                    } else {
+                        newmsg+=alphabet[j+shift-26];
+                    }
                 } else {
                     newmsg+=message[i];
                 }
