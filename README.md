@@ -13,6 +13,5 @@
 
 ## Projects
 - [Calculator](./projects/Calculator)
-- [Go Fish](./projects/Go%20Fish) (In Progress)
 - [Hangman](./projects/Hangman)
 - [Tic-Tac-Toe](./projects/Tic-Tac-Toe)
