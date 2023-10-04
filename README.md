@@ -15,4 +15,4 @@
 - [Calculator](./projects/Calculator)
 - [Hangman](./projects/Hangman)
 - [Tic-Tac-Toe](./projects/Tic-Tac-Toe)
-- [Wordle](./projects/Wordle)
+- [Wordle](./projects/Wordle) (In Progress)
