@@ -2,17 +2,15 @@
 - Small projects created by me
 ---
 ## Programs
-- [Caesar Cipher](./programs/CaesarCipher.cpp)
-- [Change Return](./programs/ChangeReturn.cpp)
-- [Factor Finder](./programs/FactorFinder.cpp)
-- [Fibonacci Sequence](./programs/FibonacciSequence.cpp)
-- [FizzBuzz](./programs/FizzBuzz.cpp)
-- [Guess the Number](./programs/GuessTheNumber.cpp)
-- [Luhn Algorithm](./programs/LuhnAlgorithm.cpp)
-- [Rock Paper Scissors](./programs/RockPaperScissors.cpp)
-
-## Projects
-- [Calculator](./projects/Calculator)
-- [Hangman](./projects/Hangman)
-- [Tic-Tac-Toe](./projects/Tic-Tac-Toe)
-- [Wordle](./projects/Wordle) (In Progress)
+- [Caesar Cipher](./programs/Caesar%20Cipher/CaesarCipher.cpp)
+- [Calculator](./programs/Calculator/Calculator.cpp)
+- [Change Return](./programs/Change%20Return/ChangeReturn.cpp)
+- [Factor Finder](./programs/Factor%20Finder/FactorFinder.cpp)
+- [Fibonacci Sequence](./programs/Fibonacci%20Sequence/FibonacciSequence.cpp)
+- [FizzBuzz](./programs/Fizz%20Buzz/FizzBuzz.cpp)
+- [Guess the Number](./programs/Guess%20the%20Number/GuessTheNumber.cpp)
+- [Hangman](./programs/Hangman/Hangman.cpp)
+- [Luhn Algorithm](./programs/Luhn%20Algorithm/LuhnAlgorithm.cpp)
+- [Rock Paper Scissors](./programs/Rock%20Paper%20Scissors/RockPaperScissors.cpp)
+- [Tic-Tac-Toe](./programs/Tic-Tac-Toe/TicTacToe.cpp)
+- [Wordle](./programs/Wordle) (In Progress)
