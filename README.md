@@ -13,4 +13,4 @@
 - [Luhn Algorithm](./programs/Luhn%20Algorithm/LuhnAlgorithm.cpp)
 - [Rock Paper Scissors](./programs/Rock%20Paper%20Scissors/RockPaperScissors.cpp)
 - [Tic-Tac-Toe](./programs/Tic-Tac-Toe/TicTacToe.cpp)
-- [Wordle](./programs/Wordle) (In Progress)
+- [Wordle](./programs/Wordle/Wordle.cpp) (In Progress)
