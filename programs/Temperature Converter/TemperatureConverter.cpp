@@ -4,7 +4,7 @@ double celsius{};
 double kelvin{};
 
 void convertFahrenheit(double f){
-    std::cout<<"Celsius: "<<((f-32)*(5/9))<<'\n';
+    std::cout<<"Celsius: "<<((f-32)*((double)5/9))<<'\n';
     std::cout<<"Kelvin: "<<(((f-32)/1.8)+273.15);
 }
 void convertCelsius(double c){
@@ -19,7 +19,8 @@ void convertKelvin(double k){
 int main(){
     char option{};
 
-    std::cout<<"f - fahrenheit\nc - celsius\nk - kelvin"<<std::endl;
+    std::cout<<"(f) - fahrenheit\n(c) - celsius\n(k) - kelvin\n";
+    std::cout<<"choose a temperature scale: ";
     std::cin>>option;
     switch(option){
         case 'f':
