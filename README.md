@@ -2,6 +2,7 @@
 - Small projects created by me
 ---
 ## Programs
+- [Body Mass Index](./programs/Body%20Mass%20Index/bodyMassIndex.cpp)
 - [Caesar Cipher](./programs/Caesar%20Cipher/CaesarCipher.cpp)
 - [Calculator](./programs/Calculator/Calculator.cpp)
 - [Change Return](./programs/Change%20Return/ChangeReturn.cpp)
