@@ -15,4 +15,4 @@
 - [Rock Paper Scissors](./programs/Rock%20Paper%20Scissors/RockPaperScissors.cpp)
 - [Temperature Converter](./programs/Temperature%20Converter/TemperatureConverter.cpp)
 - [Tic-Tac-Toe](./programs/Tic-Tac-Toe/TicTacToe.cpp)
-- [Wordle](./programs/Wordle/Wordle.cpp) (In Progress)
+- [Wordle](./programs/Wordle/Wordle.cpp)
