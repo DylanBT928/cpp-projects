@@ -1,6 +1,7 @@
 # small-projects
-- Small projects created by me
----
+<p>📋 Quick projects to practice and learn coding</p>
+
+
 ## Programs
 - [Body Mass Index](./programs/Body%20Mass%20Index/bodyMassIndex.cpp)
 - [Caesar Cipher](./programs/Caesar%20Cipher/CaesarCipher.cpp)
