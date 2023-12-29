@@ -1,8 +1,9 @@
-# small-projects
-- Small projects created by me
----
+# Small Projects 📋
+A list of quick and easy projects that were programmed by me.
+
 ## Programs
 - [Body Mass Index](./programs/Body%20Mass%20Index/bodyMassIndex.cpp)
+- [Bulls and Cows](./programs/Bulls%20and%20Cows/bullsAndCows.cpp)
 - [Caesar Cipher](./programs/Caesar%20Cipher/CaesarCipher.cpp)
 - [Calculator](./programs/Calculator/Calculator.cpp)
 - [Change Return](./programs/Change%20Return/ChangeReturn.cpp)
