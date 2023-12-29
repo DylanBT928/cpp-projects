@@ -1,6 +1,6 @@
-# Small Projects 📋
-A list of quick and easy projects that were programmed by me.
-
+# small-projects
+- Small projects created by me
+---
 ## Programs
 - [Body Mass Index](./programs/Body%20Mass%20Index/bodyMassIndex.cpp)
 - [Bulls and Cows](./programs/Bulls%20and%20Cows/bullsAndCows.cpp)
