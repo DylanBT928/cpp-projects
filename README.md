@@ -26,6 +26,8 @@ A list of quick and easy projects that were programmed by me.
 
 - [Temperature Converter](./programs/Temperature%20Converter/TemperatureConverter.cpp) - Converts an inputted temperature between 3 different temperature scales: Fahrenheit, Celsius, and Kelvin.
 
+- [Tetris](./programs/Tetris/Tetris.cpp) - A puzzle video game that allows players to rotate falling blocks strategically to clear levels.
+
 - [Tic-Tac-Toe](./programs/Tic-Tac-Toe/TicTacToe.cpp) - A simple game in which a user must win by getting 3 in a row with their shape: X or O.
 
 - [Wordle](./programs/Wordle/Wordle.cpp) - A word game in which the user must guess a 5-letter word within 6 tries. The user receives feedback whether the letter is not in the word; in the word, but not in the correct position; or both in the word and in the correct position.
