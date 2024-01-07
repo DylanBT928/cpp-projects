@@ -106,23 +106,34 @@ int main()
     SetConsoleActiveScreenBuffer(hConsole);
     DWORD dwBytesWritten = 0;
 
+    // Game logic variables
     bool bGameOver = false;
-
-    int nCurrentPiece = 0;
+    int nCurrentPiece = 1;
     int nCurrentRotation = 0;
     int nCurrentX = nFieldWidth / 2;
     int nCurrentY = 0;
+    bool bKey[4];
 
     while (!bGameOver)
     {
         // Game timing
-
+        this_thread::sleep_for(50ms); // One tick
 
         // Input
+        for (int k = 0; k < 4; k++)                   // Keybinds: R   L   D  Z
+            bKey[k] = (0x8000 & GetAsyncKeyState((unsigned char)("\x27\x25\x28Z"[k]))) != 0;
 
 
         // Game logic
-
+        if (bKey[0])
+            if (doesPieceFit(nCurrentPiece, nCurrentRotation, nCurrentX + 1, nCurrentY))
+                nCurrentX = nCurrentX + 1;
+        if (bKey[1])
+            if (doesPieceFit(nCurrentPiece, nCurrentRotation, nCurrentX - 1, nCurrentY))
+                nCurrentX = nCurrentX - 1;
+        if (bKey[2])
+            if (doesPieceFit(nCurrentPiece, nCurrentRotation, nCurrentX, nCurrentY + 1))
+                nCurrentY = nCurrentY + 1;
 
         // Render output
 
