@@ -1,3 +1,11 @@
+/*
+ *  Controls:
+ *  Z - Rotate
+ *  X - Move left
+ *  C - Move right
+ *  V - Soft drop
+ */
+
 #define UNICODE
 
 #include <iostream>
@@ -108,11 +116,13 @@ int main()
 
     // Game logic variables
     bool bGameOver = false;
+    bool bKey[4];
+    bool bRotateHold = false;
     int nCurrentPiece = 1;
     int nCurrentRotation = 0;
     int nCurrentX = nFieldWidth / 2;
     int nCurrentY = 0;
-    bool bKey[4];
+    
 
     while (!bGameOver)
     {
@@ -120,20 +130,22 @@ int main()
         this_thread::sleep_for(50ms); // One tick
 
         // Input
-        for (int k = 0; k < 4; k++)                   // Keybinds: R   L   D  Z
-            bKey[k] = (0x8000 & GetAsyncKeyState((unsigned char)("\x27\x25\x28Z"[k]))) != 0;
+        for (int k = 0; k < 4; k++)                   // Keybinds: L   R   D  Z
+            bKey[k] = (0x8000 & GetAsyncKeyState((unsigned char)("\x58\x43\x56Z"[k]))) != 0;
 
 
         // Game logic
-        if (bKey[0])
-            if (doesPieceFit(nCurrentPiece, nCurrentRotation, nCurrentX + 1, nCurrentY))
-                nCurrentX = nCurrentX + 1;
-        if (bKey[1])
-            if (doesPieceFit(nCurrentPiece, nCurrentRotation, nCurrentX - 1, nCurrentY))
-                nCurrentX = nCurrentX - 1;
-        if (bKey[2])
-            if (doesPieceFit(nCurrentPiece, nCurrentRotation, nCurrentX, nCurrentY + 1))
-                nCurrentY = nCurrentY + 1;
+        nCurrentX -= (bKey[0] && doesPieceFit(nCurrentPiece, nCurrentRotation, nCurrentX - 1, nCurrentY)) ? 1 : 0; // Left
+        nCurrentX += (bKey[1] && doesPieceFit(nCurrentPiece, nCurrentRotation, nCurrentX + 1, nCurrentY)) ? 1 : 0; // Right
+        nCurrentY += (bKey[2] && doesPieceFit(nCurrentPiece, nCurrentRotation, nCurrentX, nCurrentY + 1)) ? 1 : 0; // Down
+
+        if (bKey[3])
+        {
+            nCurrentRotation += (!bRotateHold && doesPieceFit(nCurrentPiece, nCurrentRotation + 1, nCurrentX, nCurrentY)) ? 1 : 0;  // Rotate
+            bRotateHold = true;
+        }
+        else
+            bRotateHold = false;
 
         // Render output
 
