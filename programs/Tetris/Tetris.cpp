@@ -118,16 +118,22 @@ int main()
     bool bGameOver = false;
     bool bKey[4];
     bool bRotateHold = false;
+    bool bForceDown = false;
     int nCurrentPiece = 1;
     int nCurrentRotation = 0;
     int nCurrentX = nFieldWidth / 2;
     int nCurrentY = 0;
+    int nSpeed = 20;
+    int nSpeedCounter = 0;
+    vector<int> vLines;
     
 
     while (!bGameOver)
     {
         // Game timing
-        this_thread::sleep_for(50ms); // One tick
+        this_thread::sleep_for(50ms); // Game tick
+        nSpeedCounter++;
+        bForceDown = (nSpeedCounter == nSpeed);
 
         // Input
         for (int k = 0; k < 4; k++)                   // Keybinds: L   R   D  Z
@@ -147,6 +153,49 @@ int main()
         else
             bRotateHold = false;
 
+        if (bForceDown)
+        {
+            if (doesPieceFit(nCurrentPiece, nCurrentRotation, nCurrentX, nCurrentY + 1))
+                nCurrentY++;
+            else
+            {
+                // Lock-in the current piece
+                for (int px = 0; px < 4; px++)
+                    for (int py = 0; py < 4; py++)
+                        if (tetromino[nCurrentPiece][rotate(px, py, nCurrentRotation)] == L'X')
+                            pField[(nCurrentY + py) * nFieldWidth + (nCurrentX + px)] = nCurrentPiece + 1;
+
+                // Check for cleared lines
+                for (int py = 0; py < 4; py++)
+                    if (nCurrentY + py < nFieldHeight - 1)
+                    {
+                        bool bLine = true;
+                        for (int px = 1; px < nFieldWidth - 1; px++)
+                            bLine &= (pField[(nCurrentY + py) * nFieldWidth + px]) != 0;
+                        
+                        if (bLine)
+                        {
+                            // Clear line
+                            for (int px = 1; px < nFieldWidth - 1; px++)
+                                pField[(nCurrentY + py) * nFieldWidth + px] = 8;
+                            
+                            vLines.push_back(nCurrentY + py);
+                        }
+                    }
+
+                // Choose the next piece
+                nCurrentX = nFieldWidth / 2;
+                nCurrentY = 0;
+                nCurrentRotation = 0;
+                nCurrentPiece = rand() % 7;
+
+                // Next piece cannot fit
+                bGameOver = !doesPieceFit(nCurrentPiece, nCurrentRotation, nCurrentX, nCurrentY);
+            }
+
+            nSpeedCounter = 0;
+        }
+
         // Render output
 
 
@@ -160,6 +209,21 @@ int main()
             for (int py = 0; py < 4; py++)
                 if (tetromino[nCurrentPiece][rotate(px, py, nCurrentRotation)] == L'X')
                     screen[(nCurrentY + py + 2) * nScreenWidth + (nCurrentX + px + 2)] = nCurrentPiece + 65;
+
+        if (!vLines.empty())
+        {
+            // Display frame to draw lines
+            WriteConsoleOutputCharacter(hConsole, screen, nScreenWidth * nScreenHeight, {0, 0}, &dwBytesWritten);
+            this_thread::sleep_for(400ms);
+
+            for (auto &v : vLines)
+                for (int px = 1; px < nFieldWidth - 1; px++)
+                {
+                    for (int py = v; py > 0; py--)
+                        pField[py * nFieldWidth + px] = pField[(py - 1) * nFieldWidth + px];
+                    pField[px] = 0;
+                }
+        }
 
         // Display frame
         WriteConsoleOutputCharacter(hConsole, screen, nScreenWidth * nScreenHeight, {0, 0}, &dwBytesWritten);
