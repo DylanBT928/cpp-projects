@@ -102,6 +102,8 @@ int main()
     tetromino[6].append(L".X..");
     tetromino[6].append(L".X..");
 
+    srand(static_cast<unsigned int>(time(nullptr))); // Seed for rand() function
+
     pField = new unsigned char[nFieldWidth * nFieldHeight]; // Create playing field buffer
     for (int x = 0; x < nFieldWidth; x++) // Board boundary
         for (int y = 0; y < nFieldHeight; y++)
@@ -119,12 +121,14 @@ int main()
     bool bKey[4];
     bool bRotateHold = false;
     bool bForceDown = false;
-    int nCurrentPiece = 1;
+    int nCurrentPiece = rand() % 7;
     int nCurrentRotation = 0;
     int nCurrentX = nFieldWidth / 2;
     int nCurrentY = 0;
     int nSpeed = 20;
     int nSpeedCounter = 0;
+    int nPieceCount = 0;
+    int nScore = 0;
     vector<int> vLines;
     
 
@@ -138,7 +142,6 @@ int main()
         // Input
         for (int k = 0; k < 4; k++)                   // Keybinds: L   R   D  Z
             bKey[k] = (0x8000 & GetAsyncKeyState((unsigned char)("\x58\x43\x56Z"[k]))) != 0;
-
 
         // Game logic
         nCurrentX -= (bKey[0] && doesPieceFit(nCurrentPiece, nCurrentRotation, nCurrentX - 1, nCurrentY)) ? 1 : 0; // Left
@@ -155,6 +158,12 @@ int main()
 
         if (bForceDown)
         {
+            nSpeedCounter = 0;
+            nPieceCount++;
+            if (nPieceCount % 10 == 0)
+                if (nSpeed >= 10)
+                    nSpeed--;
+
             if (doesPieceFit(nCurrentPiece, nCurrentRotation, nCurrentX, nCurrentY + 1))
                 nCurrentY++;
             else
@@ -183,6 +192,10 @@ int main()
                         }
                     }
 
+                nScore += 25;
+                if (!vLines.empty())
+                    nScore += (1 << vLines.size() - 1) * 100;
+
                 // Choose the next piece
                 nCurrentX = nFieldWidth / 2;
                 nCurrentY = 0;
@@ -192,12 +205,7 @@ int main()
                 // Next piece cannot fit
                 bGameOver = !doesPieceFit(nCurrentPiece, nCurrentRotation, nCurrentX, nCurrentY);
             }
-
-            nSpeedCounter = 0;
         }
-
-        // Render output
-
 
         // Draw field
         for (int x = 0; x < nFieldWidth; x++)
@@ -209,6 +217,9 @@ int main()
             for (int py = 0; py < 4; py++)
                 if (tetromino[nCurrentPiece][rotate(px, py, nCurrentRotation)] == L'X')
                     screen[(nCurrentY + py + 2) * nScreenWidth + (nCurrentX + px + 2)] = nCurrentPiece + 65;
+
+        // Draw score
+        swprintf_s(&screen[2 * nScreenWidth + nFieldWidth + 6], 16, L"Score: %8d", nScore);
 
         if (!vLines.empty())
         {
@@ -223,11 +234,18 @@ int main()
                         pField[py * nFieldWidth + px] = pField[(py - 1) * nFieldWidth + px];
                     pField[px] = 0;
                 }
+            
+            vLines.clear();
         }
 
         // Display frame
         WriteConsoleOutputCharacter(hConsole, screen, nScreenWidth * nScreenHeight, {0, 0}, &dwBytesWritten);
     }
+
+    // Game over
+    CloseHandle(hConsole);
+    cout << "Game Over! Score: " << nScore << endl;
+    system("pause");
 
     return 0;
 }
