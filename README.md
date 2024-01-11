@@ -4,6 +4,9 @@ A list of quick and easy projects that were programmed by me.
 ## Programs
 - [Body Mass Index](./programs/Body%20Mass%20Index/bodyMassIndex.cpp) - Calculates the measurement of body fat based on the height and weight inputted.
 
+- [Breakout](./programs/Breakout/Breakout.cpp) - An arcade video game where a player breaks brick walls with a ball by bouncing it on a moveable paddle.
+
+
 - [Caesar Cipher](./programs/Caesar%20Cipher/CaesarCipher.cpp) - An encoder and decoded for the Caesar Cipher, a method in which each letter in the plaintext is replaced by another letter some fixed number of positions down the alphabet.
 
 - [Calculator](./programs/Calculator/Calculator.cpp) - A simple calculator that includes addition, subtraction, multiplication, division, power, and percentage.
