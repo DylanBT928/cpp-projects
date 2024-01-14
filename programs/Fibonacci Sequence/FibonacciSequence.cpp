@@ -1,27 +1,32 @@
 #include <iostream>
-using namespace std;
-int main(){
+
+int main()
+{
     //sequence starts with 0 and 1
-    int x = 0;
-    int y = 1;
-    int z = x + y;
+    float x = 0;
+    float y = 1;
+    float z = x + y;
     int nth;
-    cout<<"nth digit: ";
-    cin>>nth;
-    switch(nth){
+
+    std::cout << "nth digit: ";
+    std::cin >> nth;
+
+    switch (nth)
+    {
         case 0: 
-            cout<<"Nothing is printed.";
+            std::cout << "Nothing is printed.";
             break;
         case 1:
-            cout<<"0";
+            std::cout << "0";
             break;
         case 2:
-            cout<<"0, 1";
+            std::cout << "0, 1";
             break;
         default:
-            cout<<"0, 1";
-            while(nth>2){
-                cout<<", "<<z;
+            std::cout << "0, 1";
+            while (nth>2)
+            {
+                std::cout << ", " << z;
                 x = y;
                 y = z;
                 z = x + y;
@@ -29,4 +34,6 @@ int main(){
             }
             break;
     }
+
+    return 0;
 }

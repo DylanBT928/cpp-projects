@@ -1,37 +1,42 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
-using namespace std;
-int main(){
-    /*
-    * The user has 4 tries to guess the number.
-    * The secretNum is randomly generated from 1 to 10.
-    * srand creates a seed for rand
-    * rand creates a random number
-    */
+
+int main()
+{
     srand(static_cast<unsigned int>(time(nullptr)));
-    int guesses = 4, num;
-    int secretNum = rand()%10+1;
-    cout<<"Guess the number from 1-10 within 4 tries:"<<endl;
+    int guesses = 10, num;
+    int secretNum = rand()%100+1;
+
+    std::cout << "Guess the number from 1-100 within 10 tries:" << std::endl;
+
     //Keep on trying until there are no more tries or user guesses the right number.
-    while(guesses>0){
-        cin>>num;
-        if(num>10 || num<1){
+    while (guesses > 0)
+    {
+        std::cin >> num;
+        std::cout << "Guesses: " << guesses << std::endl;
+        if (num > 100 || num < 1)
             //Does not use up a guess
-            cout<<"Out of bounds. Try again."<<endl;
-        } else if(num<secretNum){
-            cout<<"The number is higher."<<endl;
+            std::cout << "Out of bounds. Try again." << std::endl;
+        else if (num < secretNum)
+        {
+            std::cout << "The number is higher." << std::endl;
             guesses--;
-        } else if(num>secretNum){
-            cout<<"The number is lower."<<endl;
+        } 
+        else if (num > secretNum)
+        {
+            std::cout << "The number is lower." << std::endl;
             guesses--;
-        } else{
-            cout<<"Correct! You win."<<endl;
+        } 
+        else
+        {
+            std::cout << "Correct! You win." << std::endl;
             guesses = 0;
         }
     }
-    if(guesses==0 && num!=secretNum){
-        cout<<"You lost."<<endl;
-    }
+    
+    if (guesses == 0 && num != secretNum)
+        std::cout << "You lost." << std::endl;
+
     return 0;
 }
