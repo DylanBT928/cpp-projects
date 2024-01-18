@@ -1,14 +1,13 @@
 #include <iostream>
-#include <ctype.h> 
-using namespace std;
+#include <ctype.h>
 
-string secretWord, hidden, usedLetters;
+std::string secretWord, hidden, usedLetters;
 char letter;
 
 //Converts the secret word into a blank
-string hide (string secret)
+std::string hide (std::string secret)
 {
-    string hidden{""};
+    std::string hidden{""};
     for (int i = 0; i < secret.length(); i++)
         if (secret.at(i) == ' ')
             hidden += " ";
@@ -37,7 +36,7 @@ bool isUsed(char l)
 }
 
 //Reveals the letter(s) in the word
-string reveal(char l)
+std::string reveal(char l)
 {
     for (int i = 0; i < secretWord.length(); i++)
         if (secretWord.at(i) == l)
@@ -50,43 +49,43 @@ int main()
     //6 guesses (head, torso, two arms, two legs)
     int guesses = 6;
 
-    cout<<"Please enter a word: ";
-    cin>>secretWord;
+    std::cout << "Please enter a word: ";
+    std::cin >> secretWord;
 
     //Converts inputted word/phrase into a blank word/phrase
     hidden = hide(secretWord);
-    cout<<hidden<<'\n';
+    std::cout << hidden<<'\n';
 
     //Loops while there are guesses left and not won
     while (guesses > 0 && secretWord != hidden)
     {
-        cout << "Guess a letter: ";
-        cin >> letter;
+        std::cout << "Guess a letter: ";
+        std::cin >> letter;
 
         //If the letter is already used, it does not take a guess nor reveal anything
         if (isUsed(letter) || isUsed(toupper(letter)))
-            cout<<"Letter is already used.\n";
+            std::cout<<"Letter is already used.\n";
         //If the letter is in the secret word, it is revealed
         else if (isValid(letter) || isValid(toupper(letter)))
         {
             reveal(letter);
             reveal(toupper(letter));
-            cout<<hidden<<'\n';
+            std::cout<<hidden<<'\n';
         } 
         //If it is not used and not in the secret word, a guess is taken
         else 
         {
             guesses--;
             //Prints how many guesses the user has left
-            cout<<"You have "<<guesses<<" guesses left."<<'\n';
+            std::cout << "You have " << guesses << " guesses left." << '\n';
         }
     }
 
     //States if user won or lost
     if (secretWord == hidden)
-        cout<<"Congratulations, you win!"<<endl;
+        std::cout << "Congratulations, you win!" << std::endl;
     else
-        cout<<"Sorry, you lost."<<endl;
+        std::cout << "Sorry, you lost." << std::endl;
     
     return 0;
 }
