@@ -2,7 +2,9 @@
 A list of quick and easy projects that were programmed by me.
 
 ## Programs
-- [Body Mass Index](./programs/Body%20Mass%20Index/bodyMassIndex.cpp) - Calculates the measurement of body fat based on the height and weight inputted.
+- [Asterisk Pyramid](./programs/Asterisk%20Pyramid/AsteriskPyramid.cpp) - Prints a simple pyramid pattern out of asterisk symbols.
+
+- [Body Mass Index](./programs/Body%20Mass%20Index/BodyMassIndex.cpp) - Calculates the measurement of body fat based on the height and weight inputted.
 
 - [Breakout](./programs/Breakout/Breakout.cpp) - An arcade video game where a player breaks brick walls with a ball by bouncing it on a moveable paddle.
 
