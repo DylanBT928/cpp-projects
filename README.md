@@ -34,3 +34,19 @@ A list of quick and easy projects that were programmed by me.
 - [Tetris](./programs/Tetris/Tetris.cpp) - A puzzle video game that allows players to rotate falling blocks strategically to clear levels.
 
 - [Tic-Tac-Toe](./programs/Tic-Tac-Toe/TicTacToe.cpp) - A simple game in which a user must win by getting 3 in a row with their shape: X or O
+
+
+## Contributing
+
+Any contributions made are greatly appreciated and welcomed. For major changes, please open an issue first
+to discuss what you would like to change.
+
+1) Fork the Project
+2) Create your Branch (`git checkout -b NewBranch`)
+3) Commit your Changes (`git commit -m 'Add new feature'`)
+4) Push to the Branch (`git push origin NewBranch`)
+5) Open a Pull Request
+
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
