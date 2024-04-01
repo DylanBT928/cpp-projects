@@ -8,7 +8,6 @@ A list of quick and easy projects that were programmed by me.
 
 - [Breakout](./programs/Breakout/Breakout.cpp) - An arcade video game where a player breaks brick walls with a ball by bouncing it on a moveable paddle.
 
-
 - [Caesar Cipher](./programs/Caesar%20Cipher/CaesarCipher.cpp) - An encoder and decoded for the Caesar Cipher, a method in which each letter in the plaintext is replaced by another letter some fixed number of positions down the alphabet.
 
 - [Calculator](./programs/Calculator/Calculator.cpp) - A simple calculator that includes addition, subtraction, multiplication, division, power, and percentage.
@@ -33,7 +32,9 @@ A list of quick and easy projects that were programmed by me.
 
 - [Tetris](./programs/Tetris/Tetris.cpp) - A puzzle video game that allows players to rotate falling blocks strategically to clear levels.
 
-- [Tic-Tac-Toe](./programs/Tic-Tac-Toe/TicTacToe.cpp) - A simple game in which a user must win by getting 3 in a row with their shape: X or O
+- [Tic-Tac-Toe](./programs/Tic-Tac-Toe/TicTacToe.cpp) - A simple game in which a user must win by getting 3 in a row with their shape: X or O.
+
+-[Word Counter](./programs/Word%20Counter/WordCounter.cpp) - A counter for the amount of words in a sentence or phrase.
 
 
 ## Contributing
