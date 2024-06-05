@@ -2,12 +2,12 @@
 
 int main()
 {
-    int timeChoice;
-    int hrs;
-    int mins;
-    int time;
-    int addMins;
-    int meridiemChoice;
+    int timeChoice;       // Standard or military
+    int hrs;              // Hours for standard
+    int mins;             // Minutes for standard
+    int time;             // Time for military
+    int addMins;          // Add amount of minutes
+    int meridiemChoice;   // AM or PM
     bool isValid = true;
     bool isAM = true;
     
@@ -92,6 +92,35 @@ int main()
             break;
         case 2: 
             // Military time (24-hour)
+            std::cout << "Enter time: ";
+            std::cin >> time;
+            if (time < 0 || time > 2359)
+            {
+                isValid = false;
+                break;
+            }
+            if (time < 10)
+                std::cout << "Time: 000" << time << '\n';
+            else if (time < 100)
+                std::cout << "Time: 00" << time << '\n';
+            else if (time < 1000)
+                std::cout << "Time: 0" << time << '\n';
+            else
+                std::cout << "Time: " << time << '\n';
+            std::cout << "Add mins: ";
+            std::cin >> addMins;
+            addMins %= 2359;
+            time += addMins;
+            if (time > 2359)
+                time -= 2400;
+            if (time < 10)
+                std::cout << "Time: 000" << time << '\n';
+            else if (time < 100)
+                std::cout << "Time: 00" << time << '\n';
+            else if (time < 1000)
+                std::cout << "Time: 0" << time << '\n';
+            else
+                std::cout << "Time: " << time << '\n';
             break;
         default:
             isValid = false;
