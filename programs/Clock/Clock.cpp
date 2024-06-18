@@ -8,6 +8,7 @@ int main()
     int time;             // Time for military
     int addMins;          // Add amount of minutes
     int meridiemChoice;   // AM or PM
+    int convertChoice;    // Do or do not convert
     bool isValid = true;
     bool isAM = true;
     
@@ -130,8 +131,46 @@ int main()
     if (isValid)
     {
         // Convert to other time format
+        std::cout << "Would you like to convert time formats?\n";
+        std::cout << "1. Yes\n";
+        std::cout << "2. No\n";
+        std::cout << "Enter choice: ";
+        std::cin >> convertChoice;
+        if (convertChoice == 1)
+        {
+            if (timeChoice == 1)
+            {
+                // Standard to military
+                if (isAM == false)
+                {
+                    hrs += 12;
+                }
+                if (hrs < 10)
+                    if (mins < 10)
+                        std::cout << "Converted Time: 0" << hrs << '0' << mins << std::endl;
+                    else
+                        std::cout << "Converted Time: 0" << hrs << mins << std::endl;
+                else
+                    if (mins < 10)
+                        std::cout << "Converted Time: " << hrs << '0' << mins << std::endl;
+                    else
+                        std::cout << "Converted Time: " << hrs << mins << std::endl;
+            }
+            else
+            {
+                // Military to standard
+                
+
+
+
+            }
+        }
+        else if (convertChoice == 2)
+            return 0;
+        else
+            isValid = false;
     }
-    else
+    if (!isValid)
         std::cout << "Invalid option." << std::endl;
 
     return 0;
