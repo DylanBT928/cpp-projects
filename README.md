@@ -14,6 +14,8 @@ A list of quick and easy projects that were programmed by me.
 
 - [Change Return](./programs/Change%20Return/ChangeReturn.cpp) - Calculates how much change is owed after a customer pays.
 
+- [Clock](./programs/Clock/Clock.cpp) - Calculates what time it would be after a certain amount of time is added, shown in both standard and military time.
+
 - [Factor Finder](./programs/Factor%20Finder/FactorFinder.cpp) - Finds all the possible factors of an inputted number or determines if it is a prime number.
 
 - [Fibonacci Sequence](./programs/Fibonacci%20Sequence/FibonacciSequence.cpp) - A mathematical sequence in which each number is the sum of the two preceding ones.
