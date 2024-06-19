@@ -137,7 +137,6 @@ int main()
         std::cout << "Enter choice: ";
         std::cin >> convertChoice;
         if (convertChoice == 1)
-        {
             if (timeChoice == 1)
             {
                 // Standard to military
@@ -157,14 +156,17 @@ int main()
                         std::cout << "Converted Time: " << hrs << mins << std::endl;
             }
             else
-            {
                 // Military to standard
-                
-
-
-
-            }
-        }
+                if (time % 100 < 10)
+                    if (time > 1159)
+                        std::cout << "Converted Time: " << time / 100 - 12 << ":0" << time % 100 << " PM" << std::endl;
+                    else
+                        std::cout << "Converted Time: " << time / 100 << ":0" << time % 100 << " AM" << std::endl;
+                else
+                    if (time > 1159)
+                        std::cout << "Converted Time: " << time / 100 - 12 << ":" << time % 100 << " PM" << std::endl;
+                    else
+                        std::cout << "Converted Time: " << time / 100 << ":" << time % 100 << " AM" << std::endl;
         else if (convertChoice == 2)
             return 0;
         else
