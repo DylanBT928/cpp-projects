@@ -8,12 +8,13 @@ A list of quick and easy projects that were programmed by me.
 
 - [Breakout](./programs/Breakout/Breakout.cpp) - An arcade video game where a player breaks brick walls with a ball by bouncing it on a moveable paddle.
 
-
 - [Caesar Cipher](./programs/Caesar%20Cipher/CaesarCipher.cpp) - An encoder and decoded for the Caesar Cipher, a method in which each letter in the plaintext is replaced by another letter some fixed number of positions down the alphabet.
 
 - [Calculator](./programs/Calculator/Calculator.cpp) - A simple calculator that includes addition, subtraction, multiplication, division, power, and percentage.
 
 - [Change Return](./programs/Change%20Return/ChangeReturn.cpp) - Calculates how much change is owed after a customer pays.
+
+- [Clock](./programs/Clock/Clock.cpp) - Calculates what time it would be after a certain amount of time is added, shown in both standard and military time.
 
 - [Factor Finder](./programs/Factor%20Finder/FactorFinder.cpp) - Finds all the possible factors of an inputted number or determines if it is a prime number.
 
