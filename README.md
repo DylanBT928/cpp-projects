@@ -36,7 +36,7 @@ A list of quick and easy projects that were programmed by me.
 
 - [Tic-Tac-Toe](./programs/Tic-Tac-Toe/TicTacToe.cpp) - A simple game in which a user must win by getting 3 in a row with their shape: X or O.
 
--[Word Counter](./programs/Word%20Counter/WordCounter.cpp) - A counter for the amount of words in a sentence or phrase.
+- [Word Counter](./programs/Word%20Counter/WordCounter.cpp) - A counter for the amount of words in a sentence or phrase.
 
 
 ## Contributing
