@@ -36,6 +36,8 @@ A list of quick and easy projects that were programmed by me.
 
 - [Tic-Tac-Toe](./programs/Tic-Tac-Toe/TicTacToe.cpp) - A simple game in which a user must win by getting 3 in a row with their shape: X or O.
 
+- [Wage Calculator](./programs/Wage%20Calculator/WageCalculator.cpp) - Calculates the amount of money you should be paid according to the amount of minutes you worked.
+
 - [Word Counter](./programs/Word%20Counter/WordCounter.cpp) - A counter for the amount of words in a sentence or phrase.
 
 
